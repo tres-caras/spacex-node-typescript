@@ -13,8 +13,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 const PORT = process.env.PORT || 3000;
-const db = process.env.MONGODB_URI || 'mongodb://localhost:27017/test';
-
+const db = process.env.MONGO_URL || 'mongodb://mongo:27017/app';
 connect({ db });
 routes({ app });
 

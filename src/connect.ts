@@ -4,7 +4,7 @@ type DBInput = {
     db: string
 }
 
-export const connect = async ({ db }: DBInput = {db:"mongodb://localhost/test"}) => {
+export const connect = async ({ db }: DBInput) => {
     await mongoose.connect(db)
         .then(() => {
             console.log(`--~~~=:>[XXXXXXXXX]> Connected to ${db}`);
@@ -14,7 +14,6 @@ export const connect = async ({ db }: DBInput = {db:"mongodb://localhost/test"})
             return process.exit(1);
         });
     };
-connect();
 mongoose.connection.on('disconnected', connect);
 
 

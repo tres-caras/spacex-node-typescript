@@ -14,7 +14,7 @@ services:
     env_file: .env
     environment:
       - MONGO_URL=mongodb://mongo:27017/app
-      - PORT=${PORT}
+      - PORT=3010
     ports:
       - 4000:80
     external_links:
