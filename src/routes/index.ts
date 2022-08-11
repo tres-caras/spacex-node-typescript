@@ -9,4 +9,7 @@ export default ({ app }: RoutesInput) => {
     })
     return res.send({ user })
   })
+  app.get("api/user", async (req, res) => {
+    return res.send( "Hello World");
+  })
 }
