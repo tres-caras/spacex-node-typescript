@@ -15,12 +15,12 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.dev
-    env_file: .env.local
+    env_file: .env
     environment:
       - PORT=${PORT}
       - MONGO_URL=${MONGO_URL}
     ports:
-      - "4005:4005"
+      - "4005:${PORT}"
     external_links:
       - mongo
     depends_on:
