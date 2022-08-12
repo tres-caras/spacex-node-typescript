@@ -1,5 +1,5 @@
 import createUser from "../controllers/User.controller";
-import getLaunches from "../services/launches.service";
+import getPaginatedLaunches from "../services/launches.service";
 import { RoutesInput } from "../types/types";
 export default ({ app }: RoutesInput) => {
   app.get("/", async (req, res) => {
@@ -9,7 +9,9 @@ export default ({ app }: RoutesInput) => {
   //get paginated launches
 
   app.get("/launches", async (req, res) => {
-      const launches = await getLaunches();
+      const limit = parseInt(req.query.limit as string) || 10;
+      const page = parseInt(req.query.page as string) || 1;
+      const launches = await getPaginatedLaunches(limit, page);
       res.send(launches);
     });
 
