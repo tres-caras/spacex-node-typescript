@@ -2,7 +2,7 @@ import axios from "axios";
 import { Launch } from "../models/Launch.model";
 import { Payload } from "../models/Payload.model";
 import { Rocket } from "../models/Rocket.model";
-import { Paginated } from "../models/Paginated.model";
+import { Request, Response } from "express";
 
 type PayloadResponse = {
   payloads: Payload[];
@@ -109,18 +109,21 @@ async function getLaunches(): Promise<Launch[]> {
   
 }
 
-export default async function getPaginatedLaunches(
-  limit: number,
-  page: number
-): Promise<Paginated<Launch>> {
+const getPaginatedLaunches = async function getPaginatedLaunches(
+  req: Request, res: Response) {
+
+  const limit = parseInt(req.query.limit as string) || 10;
+  const page = parseInt(req.query.page as string) || 1;
   const launches = await getLaunches();
   const paginatedLaunches = launches.slice((page - 1) * limit, page * limit);
 
-  return {
+  return res.send({
     data: paginatedLaunches,
     total: launches.length,
     per_page: limit,
-    page,
+    page: page,
     pages: Math.ceil(launches.length / limit),
-  };
+  });
 }
+
+export default getPaginatedLaunches;

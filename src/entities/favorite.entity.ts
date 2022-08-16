@@ -4,10 +4,10 @@ import { User } from './user.entity';
 @Entity()
 export class Favorite {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id: number;
     @Column()
-    name!: string;
+    name: string;
     @ManyToOne(type => User, user => user.favorites)
-    user!: User;
+    user: User;
 }
 

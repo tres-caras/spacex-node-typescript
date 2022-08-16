@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 connect({ db });
-routes({ app });
+routes(app);
 
 app
   .listen(PORT, () => {

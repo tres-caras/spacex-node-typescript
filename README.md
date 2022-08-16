@@ -24,3 +24,7 @@ This Repo contains Production Ready Boilerplate of Express TypeScript Applicatio
 ```
   docker-compose up
 ```
+## uninstall nest dependency with npm
+```
+  npm uninstall nest
+```
