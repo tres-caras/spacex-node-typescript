@@ -2,7 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Favorite } from './entities/favorite.entity';
+import { Favorite } from '../entities/favorite.entity';
 
 @Injectable()
 export class FavoritesService {
@@ -20,5 +20,8 @@ export class FavoritesService {
     }
     async deleteFavorite(id: string): Promise<void> {
         await this.favoriteRepository.delete(id);
+    }
+    async updateFavorite(id: string, favorite: Favorite) {
+        this.favoriteRepository.update(id, favorite);
     }
 }
