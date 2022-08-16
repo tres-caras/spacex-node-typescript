@@ -1,5 +1,5 @@
 import createUser from "../controllers/User.controller";
-import getPaginatedLaunches from "../services/launches.service";
+import getPaginatedLaunches from "../services/Launches.service";
 import { RoutesInput } from "../types/types";
 export default ({ app }: RoutesInput) => {
   app.get("/", async (req, res) => {
