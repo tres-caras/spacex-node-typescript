@@ -1,20 +1,14 @@
 //user entity with typeorm
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Favorite } from './favorite.entity';
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
-    private _id: number;
+    private _id!: number;
     @Column()
-    name: string;
+    name!: string;
     @Column()
-    email: string;
+    email!: string;
     @OneToMany(type => Favorite, favorite => favorite.user)
-    favorites: Favorite[];
-
-    public get id(): number {
-        return this._id;
-    }
-    public set id(value: number) {
-        this._id = value;
-    }
+    favorites!: Favorite[];
 }
