@@ -1,10 +1,10 @@
 import { Payload } from "./Payload.model";
 import { Rocket } from "./Rocket.model";
 export class Launch {
+  payloads: Payload[] = [];
+  rocket: Rocket;
   flight_number: number;
   mission_name: string;
-  rocket: Rocket;
-  payloads: Payload[] = [];
 
   constructor(flight_number: number, mission_name: string, rocket: Rocket, payloads: Payload[]) {
     this.flight_number = flight_number;
