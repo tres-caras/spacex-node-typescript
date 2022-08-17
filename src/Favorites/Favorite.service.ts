@@ -5,7 +5,7 @@ import { Favorite } from './entities/Favorite.entity';
 export class FavoritesService {
     constructor(
         private readonly favoriteRepository: Repository<Favorite>,
-    ) {}
+    ) {return this}
 
     async getFavorites(): Promise<Favorite[]> {
         return await this.favoriteRepository.find();
