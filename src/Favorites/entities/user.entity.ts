@@ -1,6 +1,6 @@
 //user entity with typeorm
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Favorite } from './favorite.entity';
+import { Favorite } from './Favorite.entity';
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
