@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Launch } from "../models/Launch.model";
-import { Payload } from "../models/Payload.model";
-import { Rocket } from "../models/Rocket.model";
+import { Launch } from "./models/Launch.model";
+import { Payload } from "./models/Payload.model";
+import { Rocket } from "./models/Rocket.model";
 import { Request, Response } from "express";
 
 type PayloadResponse = {

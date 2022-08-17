@@ -1,6 +1,6 @@
 //typescript service for favorites
 import { Repository } from 'typeorm';
-import { Favorite } from '../entities/favorite.entity';
+import { Favorite } from './entities/Favorite.entity';
 
 export class FavoritesService {
     constructor(
