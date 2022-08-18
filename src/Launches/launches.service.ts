@@ -16,7 +16,7 @@ type RocketResponse = {
   second_stage: PayloadResponse;
 }
 
-type LaunchesResponse= {
+type LaunchesResponse = {
   flight_number: number;
   mission_name: string;
   rocket: RocketResponse;
@@ -38,7 +38,7 @@ const getLaunchesOnly = async (url: string): Promise<LaunchesResponse[]> => {
     };
     returnValue.push(myLaunchObject);
   });
-  
+
   return returnValue;
 };
 
@@ -106,7 +106,7 @@ async function getLaunches(): Promise<Launch[]> {
     );
   });
   return myLaunches;
-  
+
 }
 
 const getPaginatedLaunches = async function getPaginatedLaunches(
