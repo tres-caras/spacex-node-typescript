@@ -3,11 +3,12 @@ import bodyParser from "body-parser";
 import routes from ".";
 import { AppDataSource } from "./utils/data-source";
 import validateEnv from "./utils/validateEnv";
-import config from "config";
-
+import config from "config"; //no needed to import config module
+require("dotenv").config();
 const PORT = config.get<number>('port') || 3000;
 
-AppDataSource.initialize()
+try {
+  AppDataSource.initialize()
   .then(() => {
     // VALIDATE ENV
     validateEnv();
@@ -45,3 +46,6 @@ AppDataSource.initialize()
       console.log(`Server disconnected on port ${PORT}`);
     })
   });
+} catch (error) {
+  console.error(error);
+}

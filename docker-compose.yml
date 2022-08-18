@@ -3,7 +3,7 @@ version: '3.7'
 services:
   postgres:
     container_name: postgres
-    image: postgres:latest
+    image: postgres
     ports:
       - '5432:5432'
     environment:
@@ -22,7 +22,12 @@ services:
       - "4005:${PORT}"
     environment:
       - "PORT=${PORT}"
-    external_links:
-      - postgres
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE=postgres
     depends_on:
       - postgres
+  # add app service with postres dependency
+
