@@ -1,12 +1,12 @@
 import axios from "axios";
-import { Launch } from "./models/Launch.model";
-import { Payload } from "./models/Payload.model";
-import { Rocket } from "./models/Rocket.model";
+import { Launch } from "../models/Launch.model";
+import { Payload } from "../models/Payload.model";
+import { Rocket } from "../models/Rocket.model";
 import { Request, Response } from "express";
 
 type PayloadResponse = {
   payloads: Payload[];
-}
+};
 
 type RocketResponse = {
   rocket_id: string;
@@ -14,14 +14,14 @@ type RocketResponse = {
   description: string;
   images: string[];
   second_stage: PayloadResponse;
-}
+};
 
-type LaunchesResponse= {
+type LaunchesResponse = {
   flight_number: number;
   mission_name: string;
   rocket: RocketResponse;
   payloads: Payload[];
-}
+};
 
 //caching (e.g: to a json) allows offline mode
 const getLaunchesOnly = async (url: string): Promise<LaunchesResponse[]> => {
@@ -38,7 +38,7 @@ const getLaunchesOnly = async (url: string): Promise<LaunchesResponse[]> => {
     };
     returnValue.push(myLaunchObject);
   });
-  
+
   return returnValue;
 };
 
@@ -106,24 +106,20 @@ async function getLaunches(): Promise<Launch[]> {
     );
   });
   return myLaunches;
-  
 }
 
 const getPaginatedLaunches = async function getPaginatedLaunches(
-  req: Request, res: Response) {
-
-  const limit = parseInt(req.query.limit as string) || 10;
-  const page = parseInt(req.query.page as string) || 1;
+  req: Request,
+  res: Response
+): Promise<void> {
   const launches = await getLaunches();
-  const paginatedLaunches = launches.slice((page - 1) * limit, page * limit);
-
-  return res.send({
-    data: paginatedLaunches,
-    total: launches.length,
-    per_page: limit,
-    page: page,
-    pages: Math.ceil(launches.length / limit),
-  });
-}
+  const page = parseInt(req.query.page as string) || 1;
+  const perPage = parseInt(req.query.perPage as string) || 10;
+  const paginatedLaunches = await launches.slice(
+    (page - 1) * perPage,
+    page * perPage
+  );
+  res.status(200).json(paginatedLaunches);
+};
 
 export default getPaginatedLaunches;

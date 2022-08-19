@@ -1,10 +1,10 @@
 // favorite entity with typeorm
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from 'typeorm';
-import { User } from './user.entity';
+import { User } from './User';
 @Entity()
 export class Favorite extends BaseEntity {
     @PrimaryGeneratedColumn()
-    private _id: number;
+    id: number;
     @ManyToOne(type => User, user => user.favorites)
     user: User;
     @Column()
@@ -12,10 +12,8 @@ export class Favorite extends BaseEntity {
     @Column({name: "created_at"})
     createdAt?: Date;
 
-    static findByUserId(userId: string) {
-        return this.createQueryBuilder("favorite")
-            .where("favorite.userId = :userId", { userId })
-            .getMany();
+    getUser(): User {
+        return this.user;
     }
 }
 
