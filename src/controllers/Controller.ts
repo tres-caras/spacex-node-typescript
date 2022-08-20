@@ -1,37 +1,28 @@
 // controllers for launches, favorites, and users
 
-import { AppDataSource } from "../data-source";
 import { Favorite } from "../entity/Favorite";
-import { User } from "../entity/User";
 import getPaginatedLaunches from "../services/Launches";
 import { Request, Response } from "express";
-
-export const favor = AppDataSource.getRepository(Favorite);
-export const userr = AppDataSource.getRepository(User);
+import { createUser, getUsers } from "../services/UserService";
+import { saveFavorite } from "../services/FavoriteService";
 
 export const FavoriteController = {
-    async save(favorite: Favorite) {
-        return favor.save(favorite);
-    }
-}
+  async save(req: Request, res: Response) {
+    return saveFavorite(req, res);
+  },
+};
 
 export const UserController = {
-    async getUsers() {
-        return userr.find();
-    },
-    //create user with incomingMessage as parameter
-    async createUser(mensaje: Request) {
-        console.log("########### createUser ##############");
-        console.log(mensaje.body);
-        const newUser = new User(mensaje.body.name, mensaje.body.email);
-        const saved = await userr.save(newUser);
-        return saved
-    }
-}
+  async getUsers(req: Request, res: Response) {
+    return getUsers(req, res);
+  },
+  async createUser(req: Request, res: Response) {
+    return createUser(req, res);
+  },
+};
 
 export const LaunchesController = {
-    async getLaunches(req: Request, res: Response) {
-        console.log(req.url);
-        return getPaginatedLaunches(req, res);
-    }
-}
+  async getLaunches(req: Request, res: Response) {
+    return getPaginatedLaunches(req, res);
+  },
+};
