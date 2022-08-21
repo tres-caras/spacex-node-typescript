@@ -10,10 +10,12 @@ export class Favorite extends BaseEntity {
     @Column()
     launchId?: string;
     @Column({name: "created_at"})
-    createdAt?: Date;
+    createdAt?: Date = new Date();
 
-    getUser(): User {
-        return this.user;
+    constructor(launchId: string, user: User) {
+        super();
+        this.launchId = launchId;
+        this.user = user;
     }
 }
 

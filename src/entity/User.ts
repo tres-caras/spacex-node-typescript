@@ -1,10 +1,10 @@
 //user entity with typeorm
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { Favorite } from "./Favorite";
-@Entity()
+@Entity("user")
 export class User {
   @PrimaryGeneratedColumn()
-  private _id: number;
+  id: number;
   @Column()
   name?: string;
   @Column()
