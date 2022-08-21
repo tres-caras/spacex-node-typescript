@@ -4,7 +4,7 @@ import { Favorite } from "./Favorite";
 @Entity("user")
 export class User {
   @PrimaryGeneratedColumn()
-  private _id: number;
+  id: number;
   @Column()
   name?: string;
   @Column()

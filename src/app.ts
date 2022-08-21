@@ -14,9 +14,12 @@ app.use(bodyParser.json());
 app.get("/launches", LaunchesController.getLaunches);
 
 //favorites
+app.get("/favorites", FavoriteController.getFavorites);
 app.post("/favorites", FavoriteController.save);
+app.delete("/favorites/:id", FavoriteController.delete);
 
 //users
+app.get("/user/:id", UserController.getUser);
 app.get("/user", UserController.getUsers);
 app.post("/user", UserController.createUser);
 

@@ -10,7 +10,7 @@ export class Favorite extends BaseEntity {
     @Column()
     launchId?: string;
     @Column({name: "created_at"})
-    createdAt?: Date;
+    createdAt?: Date = new Date();
 
     constructor(launchId: string, user: User) {
         super();
