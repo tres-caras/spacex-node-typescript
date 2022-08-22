@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.ts",
+  "type":"module",
   "scripts": {
     "dev": "nodemon src/server.ts",
     "start": "ts-node dist/app.js",
     "build": "tsc -p .",
-    "test": "jest"
+    "test": "tsc -p . && jest"
   },
   "keywords": [],
   "author": "",
