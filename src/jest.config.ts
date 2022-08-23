@@ -5,10 +5,13 @@
 import type { Config } from "@jest/types";
 
 const config: Config.InitialOptions = {
+  globalSetup: "./jest.globalSetup.ts",
+  globalTeardown: "./jest.globalTeardown.ts",
   preset: "ts-jest",
   testEnvironment: "node",
   testPathIgnorePatterns: ["/node_modules/", "/dist/"],
   coveragePathIgnorePatterns: ["/node_modules/", "/dist/"],
+  // coverageReporters: ['lcov', 'text-summary'],
   coverageDirectory: "coverage",
   collectCoverageFrom: ["src/**/*.ts"],
   // coverageThreshold: {
