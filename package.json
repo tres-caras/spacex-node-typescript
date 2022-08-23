@@ -2,12 +2,12 @@
   "name": "spacex-node-typescript",
   "version": "1.0.0",
   "description": "",
-  "main": "app.ts",
+  "main": "build/server.js",
   "scripts": {
-    "dev": "nodemon src/server.ts",
+    "dev": "nodemon build/server.js",
     "start": "ts-node dist/app.js",
-    "build": "tsc -p .",
-    "test": "jest"
+    "build": "rm -Rf build/ & tsc -p .",
+    "test": "NODE_ENV=test && npm run build && jest --runInBand --detectOpenHandles --forceExit --collectCoverage"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express from "express";
 import bodyParser from "body-parser";
 import {
   FavoriteController,
@@ -7,7 +7,7 @@ import {
 } from "./controllers/Controller";
 import dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
-const app: Application = express();
+const app = express();
 app.use(bodyParser.json());
 
 //launches
