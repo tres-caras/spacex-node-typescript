@@ -1,13 +1,17 @@
 const request = require("supertest");
 import app from "../app";
-import { TestDataSource } from "../data-source";
+import { AppDataSource } from "../data-source";
 
 beforeAll(async () => {
-  await TestDataSource.initialize();
+  await AppDataSource.initialize();
 });
 
 afterAll(async () => {
-  await TestDataSource.destroy();
+  await AppDataSource.destroy();
+});
+
+beforeEach(async () => {
+  await AppDataSource.synchronize();
 });
 
 describe("Sample Test", () => {

@@ -28,7 +28,7 @@ export const TestDataSource = new DataSource({
   dropSchema: true,
   synchronize: true,
   logging: true,
-  entities: ["build/entity/*.ts"],
+  entities: ["/../**/*.entity.js"],
   migrations: [],
   subscribers: [],
 });
