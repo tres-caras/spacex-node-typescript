@@ -7,7 +7,7 @@
     "dev": "nodemon build/server.js",
     "start": "ts-node dist/app.js",
     "build": "rm -Rf build/ & tsc -p .",
-    "test": "NODE_ENV=test && npm run build && jest --runInBand --detectOpenHandles --forceExit --collectCoverage"
+    "test": "NODE_ENV=test && node_modules/.bin/jest src/test --watchAll --runInBand --verbose"
   },
   "keywords": [],
   "author": "",
