@@ -5,11 +5,12 @@ import { User } from "./entity/User";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "localhost",
-  port: 5432,
-  username: "postgres",
-  password: "postgres",
-  database: "postgres",
+  host:
+    getDatabaseHost(),
+  port: Number(process.env.DATABASE_PORT) || 5432,
+  username: process.env.DATABASE_USER || "postgres",
+  password: process.env.DATABASE_PASSWORD || "postgres",
+  database: process.env.DATABASE_NAME || "postgres",
   dropSchema: true,
   synchronize: true,
   logging: false,
@@ -17,3 +18,10 @@ export const AppDataSource = new DataSource({
   migrations: [],
   subscribers: [],
 });
+function getDatabaseHost(): string {
+  let host = process.env.NODE_ENV == "production"
+    ? process.env.DATABASE_HOST
+    : "localhost";
+  return host;
+}
+
