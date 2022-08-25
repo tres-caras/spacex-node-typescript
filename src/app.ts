@@ -5,8 +5,7 @@ import {
   UserController,
   LaunchesController,
 } from "./controllers/Controller";
-import dotenv from "dotenv";
-dotenv.config({ path: ".env.local" });
+
 const app = express();
 app.use(bodyParser.json());
 

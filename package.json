@@ -4,9 +4,8 @@
   "description": "",
   "main": "build/server.js",
   "scripts": {
-    "dev": "nodemon build/server.js",
-    "start": "ts-node dist/app.js",
-    "build": "rm -Rf build/ & tsc -p .",
+    "dev": "npm run build && nodemon build/server.js",
+    "build": "tsc -p .",
     "test": "NODE_ENV=test && node_modules/.bin/jest src/test --watchAll --runInBand --verbose"
   },
   "keywords": [],
