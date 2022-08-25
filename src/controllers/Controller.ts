@@ -6,6 +6,7 @@ import {
   saveFavorite,
   getFavorites,
   deleteFavorite,
+  getFavorite
 } from "../services/FavoriteService";
 
 export const FavoriteController = {
@@ -18,6 +19,9 @@ export const FavoriteController = {
   async delete(req: Request, res: Response) {
     return deleteFavorite(req, res);
   },
+  async getFavorite(req: Request, res: Response) {
+    return getFavorite(req, res);
+  }
 };
 
 export const UserController = {
