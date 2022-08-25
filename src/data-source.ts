@@ -17,18 +17,3 @@ export const AppDataSource = new DataSource({
   migrations: [],
   subscribers: [],
 });
-
-export const TestDataSource = new DataSource({
-  type: "postgres",
-  host: "localhost",
-  port: 5432,
-  username: "postgres",
-  password: "postgres",
-  database: "postgres",
-  dropSchema: true,
-  synchronize: true,
-  logging: true,
-  entities: ["/../**/*.entity.js"],
-  migrations: [],
-  subscribers: [],
-});

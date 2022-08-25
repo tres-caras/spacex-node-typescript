@@ -15,6 +15,7 @@ app.get("/launches", LaunchesController.getLaunches);
 
 //favorites
 app.get("/favorites", FavoriteController.getFavorites);
+app.get("/favorites/:id", FavoriteController.getFavorite);
 app.post("/favorites", FavoriteController.save);
 app.delete("/favorites/:id", FavoriteController.delete);
 

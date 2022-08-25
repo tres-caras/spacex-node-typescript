@@ -19,8 +19,7 @@ export const saveFavorite = async (req: Request, res: Response) => {
 };
 
 export const deleteFavorite = async (req: Request, res: Response) => {
-  let favoriteId = parseInt(req.params.id);
-  let favorite = await favor.findOneBy({ id: favoriteId });
+  let favorite = await favor.findOneBy({ id: parseInt(req.params.id) });
   if (!favorite) {
     res.status(404).json({ message: "Favorite not found" });
   } else {
@@ -31,4 +30,13 @@ export const deleteFavorite = async (req: Request, res: Response) => {
 
 export const getFavorites = async (req: Request, res: Response) => {
   res.status(200).json(await favor.find());
+};
+
+export const getFavorite = async (req: Request, res: Response) => {
+  let favorite = await favor.findOneBy({ id: parseInt(req.params.id) });
+  if (!favorite) {
+    res.status(404).json({ message: "Favorite not found" });
+  } else {
+    res.status(200).json(favorite);
+  }
 };
